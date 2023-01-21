@@ -10,4 +10,13 @@ import { CartService } from '../cart.service';
 })
 export class ShippingComponent {
 
+  constructor(private cartService: CartService){}
+
+  //define shippingCosts
+  shippingCosts!: Observable<{type: string, price: number}[]>;
+
+  ngOnInit(): void{
+    this.shippingCosts = this.cartService.getShippingPrices();
+  }
+
 }
